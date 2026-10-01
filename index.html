@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Fruit Slice</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon-192.png">
+  <meta name="theme-color" content="#1a1a2e">
+</head>
+<body>
+  <div id="game-container">
+    <canvas id="gameCanvas"></canvas>
+    <div id="ui-layer">
+      <div id="score-board">
+        <div>คะแนน: <span id="score">0</span></div>
+        <div>สูงสุด: <span id="best-score">0</span></div>
+      </div>
+      <div id="lives-board">❤️ <span id="lives">3</span></div>
+    </div>
+    
+    <div id="game-over-modal" class="modal hidden">
+      <div class="modal-content">
+        <h1>จบเกม!</h1>
+        <p>คะแนนที่คุณได้: <span id="final-score">0</span></p>
+        <button id="restart-btn">เล่นอีกครั้ง</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/game.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js')
+        .then(() => console.log('Service Worker Registered'))
+        .catch(err => console.error('SW Registration Failed', err));
+    }
+  </script>
+</body>
+</html>
